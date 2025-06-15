@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Form</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <h2>Contact Form</h2>
+
+        {% for message in form.name.errors %}
+            <div class="error">{{ message }}</div>
+        {% endfor %}
+        {% for message in form.email.errors %}
+            <div class="error">{{ message }}</div>
+        {% endfor %}
+
+        <form method="post" action="{{ url_for('contact') }}">
+            {{ form.hidden_tag() }}
+
+            <div class="form-group">
+                {{ form.name.label }}<br>
+                {{ form.name }}
+            </div>
+
+            <div class="form-group">
+                {{ form.Gender.label }}<br>
+                {{ form.Gender }}
+            </div>
+
+            <div class="form-group">
+                {{ form.Address.label }}<br>
+                {{ form.Address }}
+            </div>
+
+            <div class="form-group">
+                {{ form.email.label }}<br>
+                {{ form.email }}
+            </div>
+
+            <div class="form-group">
+                {{ form.Age.label }}<br>
+                {{ form.Age }}
+            </div>
+
+            <div class="form-group">
+                {{ form.language.label }}<br>
+                {{ form.language }}
+            </div>
+
+            {{ form.submit }}
+        </form>
+    </div>
+</body>
+</html>
